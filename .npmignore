@@ -1,0 +1,10 @@
+# Ignore
+*
+
+# Keep
+!api/**/*
+!resources/**/*
+!src/*
+!index.html
+!package*.json
+!.*rc

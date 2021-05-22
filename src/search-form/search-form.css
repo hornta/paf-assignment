@@ -1,0 +1,15 @@
+form[role=search] label {
+	display: block;
+	font-weight: bold;
+	color: rgba(0, 0, 0, 0.6)
+}
+
+form[role=search] input {
+	border:1px solid #afafaf;
+  padding: 0.3em;
+  border-radius: 4px;
+	display: block;
+	margin-bottom: 0.6em;
+	width: 100%;
+	font-size: 1.2em;
+}

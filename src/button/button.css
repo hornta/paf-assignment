@@ -1,0 +1,24 @@
+.button {
+  border-radius: 4px;
+  color: white;
+	border: none;
+	cursor: pointer;
+}
+
+.btn-variant-primary {
+  background-color: palevioletred;
+}
+
+.btn-variant-secondary {
+  background-color: goldenrod;
+}
+
+.btn-size-700 {
+  padding: 0.4em 1em;
+	font-size: 1.2em;
+}
+
+.btn-size-500 {
+  padding: 0.2em 0.9em;
+	font-size: 1em;
+}

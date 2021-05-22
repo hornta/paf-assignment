@@ -1,0 +1,10 @@
+.game-logo {
+	background: white;
+	border-radius: 50%;
+	display: inline-block;
+}
+
+.game-logo img {
+	max-width: 100%;
+	max-height: 100%;
+}
