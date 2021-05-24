@@ -3,7 +3,7 @@ import { fetchLists } from "../api";
 import { SearchForm } from "../search-form/search-form";
 import { GameLists } from "../types";
 import { GameListsView } from "../game-lists-view/game-lists-view";
-import { createMsg } from "./app-helpers";
+import { countItemsInLists, createMsg } from "./app-helpers";
 import {
 	ActionType,
 	appReducer,
@@ -17,7 +17,7 @@ import "./app.css";
 const makeAction = createMsg<Messages>();
 
 const initialState: AppReducerState = {
-	status: LoadingStatus.PENDING,
+	status: LoadingStatus.INITIAL,
 };
 
 export const App = () => {
@@ -26,12 +26,13 @@ export const App = () => {
 	useEffect(() => {
 		let isCanceled = false;
 		const fetch = async () => {
+			dispatch(makeAction(ActionType.PENDING));
 			try {
 				const data = await fetchLists();
 				if (!isCanceled) {
 					dispatch(makeAction(ActionType.FULFILLED, data));
 				}
-			} catch {
+			} catch (e) {
 				if (!isCanceled) {
 					dispatch(makeAction(ActionType.REJECTED));
 				}
@@ -54,7 +55,7 @@ export const App = () => {
 			<SearchForm className="search-form" onSearch={handleSearch} />
 
 			{state.filterTerm && state.status === LoadingStatus.FULFILLED && (
-				<>
+				<span data-testid="filter-result">
 					{countItemsInLists(state.filteredData)} results for{" "}
 					<strong>{state.filterTerm}</strong> found |{" "}
 					<Button
@@ -65,20 +66,20 @@ export const App = () => {
 					>
 						Clear filter
 					</Button>
-				</>
+				</span>
 			)}
 
 			{state.status === LoadingStatus.PENDING ? (
-				"Loading lists..."
+				<span>Loading lists...</span>
 			) : state.status === LoadingStatus.REJECTED ? (
-				"Failed to load lists"
-			) : (
+				<span>Failed to load lists</span>
+			) : state.status === LoadingStatus.FULFILLED ? (
 				<GameListsView
 					aria-live="polite"
 					aria-busy={state.status === LoadingStatus.PENDING}
 					lists={state.filterTerm ? state.filteredData : state.originalData}
 				/>
-			)}
+			) : null}
 		</>
 	);
 };

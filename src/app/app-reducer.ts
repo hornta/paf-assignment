@@ -2,6 +2,7 @@ import type { GameLists } from "../types";
 import type { ActionMap } from "./app-helpers";
 
 export enum LoadingStatus {
+	INITIAL,
 	PENDING,
 	REJECTED,
 	FULFILLED,
@@ -15,6 +16,7 @@ export interface AppReducerState {
 }
 
 export enum ActionType {
+	PENDING,
 	FULFILLED,
 	REJECTED,
 	FILTER,
@@ -70,6 +72,12 @@ export const appReducer = (
 					state.status === LoadingStatus.FULFILLED
 						? filterData(action.payload.filterTerm, state.originalData)
 						: undefined,
+			};
+			break;
+		case ActionType.PENDING:
+			return {
+				...state,
+				status: LoadingStatus.PENDING,
 			};
 			break;
 		case ActionType.FULFILLED:

@@ -12,7 +12,7 @@
 	"license": "ISC",
 	"main": "index.html",
 	"scripts": {
-		"start": "parcel serve index.html",
+		"start": "parcel serve index.html --open",
 		"start:prod": "serve dist",
 		"test": "jest",
 		"build": "parcel build index.html"
@@ -26,6 +26,7 @@
 		"@babel/plugin-transform-runtime": "^7.14.3",
 		"@babel/preset-react": "^7.13.13",
 		"@babel/preset-typescript": "^7.13.0",
+		"@testing-library/jest-dom": "^5.12.0",
 		"@testing-library/react": "^11.2.7",
 		"@testing-library/react-hooks": "^6.0.0",
 		"@testing-library/user-event": "^13.1.9",
@@ -34,20 +35,24 @@
 		"@types/react-dom": "^17.0.5",
 		"@typescript-eslint/eslint-plugin": "^4.24.0",
 		"@typescript-eslint/parser": "^4.24.0",
-		"eslint": "^7.26.0",
+		"eslint": "^7.27.0",
 		"eslint-config-prettier": "^8.3.0",
+		"eslint-plugin-jest": "^24.3.6",
+		"eslint-plugin-jest-dom": "^3.9.0",
 		"eslint-plugin-jsx-a11y": "^6.4.1",
 		"eslint-plugin-prettier": "^3.4.0",
+		"eslint-plugin-promise": "^5.1.0",
 		"eslint-plugin-react": "^7.23.2",
 		"eslint-plugin-react-hooks": "^4.2.0",
 		"jest": "^26.6.3",
-		"msw": "^0.28.2",
+		"msw": "^0.29.0",
 		"parcel-bundler": "^1.12.5",
 		"parcel-plugin-babel-typescript": "^1.0.1",
 		"parcel-plugin-static-files-copy": "^2.6.0",
 		"prettier": "2.3.0",
 		"serve": "^11.3.2",
-		"typescript": "^4.2.4"
+		"typescript": "^4.2.4",
+		"whatwg-fetch": "^3.6.2"
 	},
 	"staticFiles": {
 		"staticPath": [

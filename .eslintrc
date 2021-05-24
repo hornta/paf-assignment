@@ -3,7 +3,7 @@
 		"browser": true,
 		"es2021": true,
 		"node": true,
-		"jest": true
+		"jest/globals": true
 	},
 	"extends": [
 		"eslint:recommended",
@@ -63,6 +63,9 @@
 			"settings": {
 				"react": {
 					"version": "detect"
+				},
+				"jest": {
+					"version": "26"
 				}
 			},
 			"parser": "@typescript-eslint/parser",
@@ -82,11 +85,14 @@
 			],
 			"extends": [
 				"eslint:recommended",
-				"plugin:@typescript-eslint/recommended",
-				"plugin:@typescript-eslint/recommended-requiring-type-checking",
 				"plugin:react/recommended",
 				"plugin:jsx-a11y/recommended",
 				"plugin:react-hooks/recommended",
+				"plugin:promise/recommended",
+				"plugin:@typescript-eslint/recommended",
+				"plugin:@typescript-eslint/recommended-requiring-type-checking",
+				"plugin:jest/all",
+				"plugin:jest-dom/recommended",
 				"prettier"
 			],
 			"rules": {

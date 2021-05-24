@@ -1,7 +1,7 @@
 import type { GameLists } from "../types";
-import { GameLogo } from "../game-logo/game-logo";
 import "./game-lists-view.css";
 import type { AriaAttributes } from "react";
+import { GameListItemView } from "../game-list-item-view/game-list-item-view";
 
 interface GameListsViewProps extends AriaAttributes {
 	lists: GameLists;
@@ -20,13 +20,7 @@ export const GameListsView = ({ lists, ...props }: GameListsViewProps) => (
 					<ul className="game-item-list">
 						{listItem.items.map((item) => (
 							<li key={item.id}>
-								<article>
-									<GameLogo
-										src={item.image}
-										alt={`${item.title} by ${item.provider}`}
-									/>
-									<header>{item.title}</header>
-								</article>
+								<GameListItemView item={item} />
 							</li>
 						))}
 					</ul>
