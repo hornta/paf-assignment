@@ -1,4 +1,4 @@
-import type { ButtonHTMLAttributes } from "react";
+import type { ButtonHTMLAttributes, ReactNode } from "react";
 import "./button.css";
 
 export enum ButtonVariant {
@@ -11,9 +11,14 @@ export enum ButtonSize {
 	NORMAL = 500,
 }
 
-interface ButtonProps extends ButtonHTMLAttributes {
-	variant: ButtonVariant;
-	size: ButtonSize;
+interface ButtonProps
+	extends React.DetailedHTMLProps<
+		React.ButtonHTMLAttributes<HTMLButtonElement>,
+		HTMLButtonElement
+	> {
+	variant?: ButtonVariant;
+	size?: ButtonSize;
+	children: ReactNode;
 }
 
 export const Button = ({

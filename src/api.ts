@@ -1,4 +1,4 @@
-import { GameLists } from "./types";
+import type { GameLists } from "./types";
 
 export const fetchLists = async (): Promise<GameLists> => {
 	const response = await fetch("/api/games/lists.json");

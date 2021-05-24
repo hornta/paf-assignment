@@ -1,7 +1,6 @@
 import { useEffect, useReducer } from "react";
 import { fetchLists } from "../api";
 import { SearchForm } from "../search-form/search-form";
-import { GameLists } from "../types";
 import { GameListsView } from "../game-lists-view/game-lists-view";
 import { countItemsInLists, createMsg } from "./app-helpers";
 import {
@@ -47,7 +46,12 @@ export const App = () => {
 	}, []);
 
 	const handleSearch = (filterTerm: string) => {
-		dispatch(makeAction(ActionType.FILTER, { filterTerm, filteredData: [] }));
+		dispatch(
+			makeAction(ActionType.FILTER, {
+				filteredData: [],
+				filterTerm,
+			})
+		);
 	};
 
 	return (
@@ -69,17 +73,20 @@ export const App = () => {
 				</span>
 			)}
 
-			{state.status === LoadingStatus.PENDING ? (
-				<span>Loading lists...</span>
-			) : state.status === LoadingStatus.REJECTED ? (
-				<span>Failed to load lists</span>
-			) : state.status === LoadingStatus.FULFILLED ? (
-				<GameListsView
-					aria-live="polite"
-					aria-busy={state.status === LoadingStatus.PENDING}
-					lists={state.filterTerm ? state.filteredData : state.originalData}
-				/>
-			) : null}
+			<section
+				aria-live="polite"
+				aria-busy={state.status === LoadingStatus.PENDING}
+			>
+				{state.status === LoadingStatus.PENDING ? (
+					<span>Loading lists...</span>
+				) : state.status === LoadingStatus.REJECTED ? (
+					<span>Failed to load lists</span>
+				) : state.status === LoadingStatus.FULFILLED ? (
+					<GameListsView
+						lists={state.filterTerm ? state.filteredData : state.originalData}
+					/>
+				) : null}
+			</section>
 		</>
 	);
 };

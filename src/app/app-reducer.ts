@@ -9,10 +9,10 @@ export enum LoadingStatus {
 }
 
 export interface AppReducerState {
-	originalData: GameLists;
+	originalData?: GameLists;
 	status: LoadingStatus;
-	filteredData: GameLists;
-	filterTerm: string;
+	filteredData?: GameLists;
+	filterTerm?: string;
 }
 
 export enum ActionType {
@@ -24,9 +24,11 @@ export enum ActionType {
 }
 
 export type Messages = {
+	[ActionType.PENDING]: undefined;
 	[ActionType.FILTER]: { filteredData: GameLists; filterTerm: string };
 	[ActionType.FULFILLED]: GameLists;
 	[ActionType.REJECTED]: undefined;
+	[ActionType.CLEAR_FILTER]: undefined;
 };
 
 const filterData = (term: string, data: GameLists): GameLists => {
@@ -70,7 +72,10 @@ export const appReducer = (
 				filterTerm: action.payload.filterTerm,
 				filteredData:
 					state.status === LoadingStatus.FULFILLED
-						? filterData(action.payload.filterTerm, state.originalData)
+						? filterData(
+								action.payload.filterTerm,
+								state.originalData as GameLists
+						  )
 						: undefined,
 			};
 			break;

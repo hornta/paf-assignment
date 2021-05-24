@@ -10,7 +10,7 @@ import { Button, ButtonSize } from "../button/button";
 
 interface SearchFormProps {
 	onSearch: (searchTerm: string) => void;
-	className: string;
+	className?: string;
 }
 
 export const SearchForm = ({ onSearch, className }: SearchFormProps) => {

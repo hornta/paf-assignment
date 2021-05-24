@@ -6,8 +6,12 @@ describe("countItemsInLists", () => {
 
 		expect(
 			countItemsInLists({
+				description: "",
+				title: "",
 				lists: [
 					{
+						id: "",
+						title: "",
 						items: [],
 					},
 				],
@@ -16,9 +20,16 @@ describe("countItemsInLists", () => {
 
 		expect(
 			countItemsInLists({
+				description: "",
+				title: "",
 				lists: [
 					{
-						items: [{}, {}],
+						id: "",
+						title: "",
+						items: [
+							{ id: 1, image: "", provider: "", title: "" },
+							{ id: 2, image: "", provider: "", title: "" },
+						],
 					},
 				],
 			})
@@ -26,12 +37,24 @@ describe("countItemsInLists", () => {
 
 		expect(
 			countItemsInLists({
+				description: "",
+				title: "",
 				lists: [
 					{
-						items: [{}, {}],
+						id: "",
+						title: "",
+						items: [
+							{ id: 1, image: "", provider: "", title: "" },
+							{ id: 2, image: "", provider: "", title: "" },
+						],
 					},
 					{
-						items: [{}, {}],
+						id: "",
+						title: "",
+						items: [
+							{ id: 3, image: "", provider: "", title: "" },
+							{ id: 4, image: "", provider: "", title: "" },
+						],
 					},
 				],
 			})

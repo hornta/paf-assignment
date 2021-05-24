@@ -38,6 +38,7 @@ describe("<SearchForm>", () => {
 
 		// there's probably a more elegant way of mocking the location
 		// because new URL doesn't conform to the Location interface
+		// also typescript hates this...
 		delete window.location;
 		window.location = new URL(`https://example.com?${searchTermUrl}=${query}`);
 		render(<SearchForm onSearch={onSearch} />);

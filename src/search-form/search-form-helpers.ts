@@ -22,7 +22,7 @@ export const handleFocus = (event: FocusEvent<HTMLInputElement>): void => {
 export const setInitialSearchTerm = (): string => {
 	const searchParams = new URLSearchParams(location.search);
 	if (searchParams.has(searchTermUrl)) {
-		return searchParams.get(searchTermUrl);
+		return searchParams.get(searchTermUrl) as string;
 	}
 	return "";
 };
@@ -40,7 +40,7 @@ export const useSearchHistory = (): [
 	};
 
 	useEffect(() => {
-		localStorage.setItem(historyStorageKey, searchHistory);
+		localStorage.setItem(historyStorageKey, searchHistory.join());
 	}, [searchHistory]);
 
 	return [searchHistory, addToHistory];
