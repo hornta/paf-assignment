@@ -1,5 +1,8 @@
 import type { GameLists } from "../types";
 
+// https://medium.com/hackernoon/finally-the-typescript-redux-hooks-events-blog-you-were-looking-for-c4663d823b01
+// probably better to use something complete like @reduxjs/toolkit
+
 export const createMsg = <Obj extends { [index: string]: any }>() =>
 	function <Key extends keyof Obj>(
 		name: Key,
